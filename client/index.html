@@ -1,0 +1,43 @@
+<html ng-app='myApp'>
+	<head>
+		<title>Hello Excel File</title>
+		<link rel='stylesheet' href='./static/style.css'>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript" src="./js/customersController.js"></script>
+
+	</head>
+
+	<body ng-controller="customersController">
+		<div id="container">
+			<div id="about"> 
+				<p> First, choose a file to upload. Then press 'upload me' button.
+				It starts to upload the selected file to the server. After the saved file is parsed, the parsed data will be saved into database.
+				Everytime the new file is selected and uploaded, the newly added data is added into the database. </p>
+				<p>But, the view file only shows the recent uploaded data. </p>
+			</div>
+			<div id="upload">
+				<input type="file" file-model = "myFile" onchange="angular.element(this).scope().setChanged()" />
+				
+				<button ng-click = "uploadFile()">Upload File </button>
+				<div class="message" ng-bind="error_msg"></div>
+				<table>
+					<tr ng-repeat='customer in customers[0].data track by $index'>
+						<td ng-repeat='col in customer track by $index'>{{col}}</td>
+					</tr>
+				</table>
+			</div>
+			<!-- Next Version: view all data saved in the database -->
+			<!-- <button ng-if="viewAll" ng-click="getAllData()">View All</button>	 -->
+				<!-- <table ng-repeat='group in customers track by $index' >
+					<th>{{group.name}}</th>
+					<tr ng-repeat='customer in group.data track by $index'>
+						<td ng-repeat='col in customer track by $index'>{{col}}</td>
+					</tr>
+				</table> -->
+		</div>
+	</body>
+	<script>
+
+
+	</script>
+</html>
